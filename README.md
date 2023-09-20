@@ -1,6 +1,6 @@
 # sleepoutside
 
-Deployed to <https://main--statuesque-belekoy-5df334.netlify.app>
+Deployed to https://helpful-dodol-a2eb7e.netlify.app/
 
 ## Description
 

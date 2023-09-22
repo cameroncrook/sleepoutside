@@ -1,6 +1,6 @@
 # sleepoutside
 
-Deployed to https://helpful-dodol-a2eb7e.netlify.app/
+Deployed to https://exquisite-bienenstitch-41f521.netlify.app/
 
 ## Description
 

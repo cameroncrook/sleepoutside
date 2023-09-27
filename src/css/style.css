@@ -136,6 +136,11 @@ button {
   max-width: 600px;
   margin: auto;
 }
+.product-categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
 .products {
   padding: 0.5em;
 }

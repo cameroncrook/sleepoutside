@@ -52,3 +52,23 @@ export function displayCartCount() {
   
   return
 }
+
+export function capitalizeWords(input) {
+  // Split the input string into words
+  const words = input.split('-');
+
+  // Capitalize the first letter of each word
+  const capitalizedWords = words.map(word => {
+    // Check if the word is not empty
+    if (word.length > 0) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+    // If the word is empty, return it as is
+    return word;
+  });
+
+  // Join the capitalized words back into a string
+  const result = capitalizedWords.join(' ');
+
+  return result;
+}

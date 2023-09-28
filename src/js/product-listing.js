@@ -7,6 +7,7 @@ const category = getParam('category');
 const displayCategory = capitalizeWords(category);
 const categoryDisplayElement = document.querySelector('.products-category');
 categoryDisplayElement.textContent = `Top Products: ${displayCategory}`;
+document.title = `Top Products: ${displayCategory}`;
 
 const dataSource = new ProductData();
 const listElement = document.querySelector(".product-list");

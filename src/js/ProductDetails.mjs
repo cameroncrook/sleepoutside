@@ -42,7 +42,7 @@ export default class ProductDetails {
     // setLocalStorage("so-cart", this.product);
     const soCart = getLocalStorage("so-cart");
 
-    if (soCart === null) {
+    if (soCart === null || !Array.isArray(soCart)) {
       let productStorage = [this.product];
       setLocalStorage("so-cart", productStorage);
     } else {

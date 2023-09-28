@@ -82,12 +82,14 @@ export async function loadHeaderFooter() {
 
 export function displayCartCount() {
   const cartItems = getLocalStorage('so-cart');
-  const cartCount = cartItems.length;
+  if (cartItems) {
+    const cartCount = cartItems.length;
 
-  if (cartCount > 0) {
-    const html = `<p class="cart-count">${cartCount}</p>`
+    if (cartCount > 0) {
+      const html = `<p class="cart-count">${cartCount}</p>`
 
-    document.querySelector('.cart').innerHTML += html;
+      document.querySelector('.cart').innerHTML += html;
+    }
   }
   
   return

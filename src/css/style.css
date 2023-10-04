@@ -94,6 +94,14 @@ button {
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
+.d-none {
+  display: none;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
 /* End utility classes */
 
 /* Cart icon styles */

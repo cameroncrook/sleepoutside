@@ -1,3 +1,4 @@
+import { doc } from "prettier";
 import { setLocalStorage, getLocalStorage, displayCartCount } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
@@ -14,6 +15,11 @@ function productDetailsTemplate(product) {
     ${product.DescriptionHtmlSimple}
     </p>
     <div class="product-detail__add">
+      <div class="quantity">
+        <input type="button" id="add-btn" value="+">
+        <input id="item-quantity" type="number" value="1" min="1">
+        <input type="button" id="subtract-btn" value="-">
+      </div>
       <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
     </div></section>`;
 }
@@ -31,6 +37,18 @@ export default class ProductDetails {
     this.renderProductDetails("main");
     // once the HTML is rendered we can add a listener to Add to Cart button
     // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
+    
+    // Cart quantity stuff
+    const quanityInput = document.getElementById('item-quantity');
+    document.getElementById('add-btn').addEventListener("click", function () {
+      quanityInput.value = parseInt(quanityInput.value) + 1;
+    });
+    document.getElementById('subtract-btn').addEventListener("click", function () {
+      if (parseInt(quanityInput.value) > 1) {
+        quanityInput.value = parseInt(quanityInput.value) - 1;
+      }
+    });
+
     document
       .getElementById("addToCart")
       .addEventListener("click", this.addToCart.bind(this));
@@ -40,10 +58,14 @@ export default class ProductDetails {
   }
   addToCart() {
     // setLocalStorage("so-cart", this.product);
-    const soCart = getLocalStorage("so-cart");
+    let soCart = getLocalStorage("so-cart");
+    const quantity = parseInt(document.querySelector("#item-quantity").value);
+    this.product.quantity = quantity;
+    this.product.FinalPrice = this.product.ListPrice * quantity;
 
-    if (soCart === null) {
+    if (soCart === null || !Array.isArray(soCart)) {
       let productStorage = [this.product];
+
       setLocalStorage("so-cart", productStorage);
     } else {
       soCart.push(this.product);

@@ -1,3 +1,5 @@
+import { doc } from "prettier";
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -40,14 +42,52 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
+export function renderWithTemplate(template, parent) {
+  parent.innerHTML = template;
+
+  displayCartCount();
+
+  // const htmlStrings = list.map(template);
+
+  // if (clear) {
+  //   parent.innerHTML = "";
+  // }
+
+  // parent.insertAdjacentHTML(position, htmlStrings.join(""));
+}
+
+export async function loadTemplate(path) {
+  const htmlResponse = await fetch(path);
+  const html =  await htmlResponse.text();
+
+  // console.log(html);
+  // console.log(typeof html);
+  // const template = document.createElement('template');
+  // template.innerHTML = html;
+  return html;
+}
+
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("/partials/header.html");
+  const footerTemplate = await loadTemplate("/partials/footer.html");
+  
+  const header = document.querySelector('#main-header');
+  renderWithTemplate(headerTemplate, header);
+
+  const footer = document.querySelector('#main-footer');
+  renderWithTemplate(footerTemplate, footer);
+}
+
 export function displayCartCount() {
   const cartItems = getLocalStorage('so-cart');
-  const cartCount = cartItems.length;
+  if (cartItems) {
+    const cartCount = cartItems.length;
 
-  if (cartCount > 0) {
-    const html = `<p class="cart-count">${cartCount}</p>`
+    if (cartCount > 0) {
+      const html = `<p class="cart-count">${cartCount}</p>`
 
-    document.querySelector('.cart').innerHTML += html;
+      document.querySelector('.cart').innerHTML += html;
+    }
   }
   
   return

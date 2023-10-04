@@ -1,4 +1,4 @@
-import { getParam, displayCartCount } from "./utils.mjs";
+import { getParam, displayCartCount, loadHeaderFooter } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 
@@ -8,7 +8,7 @@ const productId = getParam("product");
 const product = new ProductDetails(productId, dataSource);
 product.init();
 
-displayCartCount();
+loadHeaderFooter();
 
 // add listener to Add to Cart button
 // document

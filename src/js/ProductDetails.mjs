@@ -49,9 +49,17 @@ export default class ProductDetails {
       }
     });
 
+    function handleAddToCartClick(event) {
+      
+      this.addToCart();
+      
+      document.querySelector('#cart-logo').classList.add('wiggling');
+    }
+    
     document
       .getElementById("addToCart")
-      .addEventListener("click", this.addToCart.bind(this));
+      .addEventListener("click", handleAddToCartClick.bind(this));
+    
   }
   sayHello() {
     console.log('hello');

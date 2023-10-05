@@ -273,6 +273,30 @@ footer {
   padding: 1em;
 }
 
+/* Cart Wiggling */
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(25deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-25deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+
+.wiggling {
+  animation: wiggle 0.5s ease-in-out 6;
+}
+
 /*Tablet and Desktop view*/
 @media only screen and (min-width: 32.5em) {
 

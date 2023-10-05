@@ -6,11 +6,17 @@ loadHeaderFooter();
 const checkout = new CheckoutProcess("so-cart", ".orderSummary");
 checkout.displaySummary();
 
-document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
+// document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
+//     e.preventDefault();
+
+//     checkout.checkout();
+// });
+
+document.querySelector("#checkout-form").addEventListener("submit", (e) => {
     e.preventDefault();
 
     checkout.checkout();
-});
+})
 
 
 

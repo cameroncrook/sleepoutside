@@ -163,6 +163,16 @@ button {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
+.alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  background-color: red;
+  opacity: 0.7;
+  cursor: pointer;
+}
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
